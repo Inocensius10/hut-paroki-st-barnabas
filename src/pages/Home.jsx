@@ -30,7 +30,9 @@ export default function Home() {
               </h2>
               <p className="text-black leading-relaxed text-justify">
                 Logo HUT Paroki St. Barnabas ke-33 mengusung tema
-                <strong> “Berakar dalam iman, bertumbuh bersama ciptaan” </strong>
+                <span className="font-semibold italic">
+                  {" "}“Berakar dalam iman, bertumbuh bersama ciptaan”
+                </span>{" "}
                 sebagai ajakan refleksi atas perjalanan iman dan pelayanan paroki.
                 Angka <strong>33</strong> dibentuk menyatu menyerupai simbol
                 <em> infinity</em>, melambangkan kedewasaan iman dan karya pelayanan

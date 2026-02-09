@@ -34,7 +34,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-xs text-white/60 py-4 border-t border-white/20">
-        © 2026 HUT Paroki St. Barnabas Pamulang
+        © 2026 Panita HUT Paroki St. Barnabas Pamulang
       </div>
     </footer>
   )

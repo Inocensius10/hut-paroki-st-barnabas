@@ -22,14 +22,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20 md:h-24">
           
-          {/* Logo + Judul */}
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="w-10 h-10 md:w-12 md:h-12" />
-            <span className="font-semibold text-sm sm:text-base md:text-lg text-green-800 leading-tight">
-              HUT Paroki <br className="sm:hidden" />
-              St. Barnabas
-            </span>
-          </div>
+            {/* Logo + Judul */}
+            <div className="flex items-center gap-2">
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-10 h-10 md:w-12 md:h-12"
+              />
+              <span className="font-semibold text-sm sm:text-base md:text-lg text-green-800 leading-snug">
+                HUT Paroki
+                <br className="sm:hidden" />
+                St. Barnabas
+              </span>
+            </div>
 
           {/* Menu Desktop */}
           <div className="hidden md:flex items-center gap-10 text-lg font-medium text-green-800">
@@ -37,7 +42,7 @@ export default function Navbar() {
             {menuItem("/informasi", "Informasi")}
             {menuItem("/jadwal", "Jadwal")}
             {menuItem("/sponsor", "Sponsor")}
-            {menuItem("/logo", "Logo")}
+            {menuItem("/merchandise", "Merchandise")}
             {menuItem("/kepanitiaan", "Kepanitiaan")}
           </div>
 
