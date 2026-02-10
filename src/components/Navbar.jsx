@@ -81,7 +81,7 @@ export default function Navbar() {
             {menuItem("/informasi", "Informasi", () => setOpen(false))}
             {menuItem("/jadwal", "Jadwal", () => setOpen(false))}
             {menuItem("/sponsor", "Sponsor", () => setOpen(false))}
-            {menuItem("/logo", "Logo", () => setOpen(false))}
+            {menuItem("/merchandise", "Merchandise", () => setOpen(false))}
             {menuItem("/kepanitiaan", "Kepanitiaan", () => setOpen(false))}
           </div>
         </div>
