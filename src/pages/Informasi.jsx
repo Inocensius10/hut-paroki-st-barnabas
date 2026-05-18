@@ -3,21 +3,57 @@ import PageWrapper from "../components/PageWrapper"
 import logo2 from "../assets/logo2.png"
 
 export default function Informasi() {
-
   const [openSection, setOpenSection] = useState(null)
+  const [showMoreInfo, setShowMoreInfo] = useState(false)
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? null : section)
   }
 
+  const infoParagraphs = [
+    {
+      id: 1,
+      text: (
+        <>
+          Perayaan HUT ke-33 Paroki Santo Barnabas Pamulang menjadi momentum
+          perjalanan iman seluruh umat untuk terus bertumbuh bersama dalam
+          kasih, pelayanan, dan kepedulian terhadap sesama serta alam ciptaan.
+        </>
+      ),
+    },
+    {
+      id: 2,
+      text: (
+        <>
+          Mengusung tema{" "}
+          <span className="font-semibold text-green-800">
+            “Berakar dalam iman, bertumbuh bersama ciptaan”
+          </span>
+          , kegiatan HUT tahun ini mengajak seluruh umat untuk membangun
+          kesadaran bahwa merawat bumi bukan hanya tanggung jawab sosial,
+          tetapi juga bagian dari panggilan iman.
+        </>
+      ),
+    },
+    {
+      id: 3,
+      text: (
+        <>
+          Rangkaian kegiatan dimulai sejak Mei 2026 melalui program pengolahan
+          sampah menjadi berkat yang melibatkan lingkungan, wilayah, OMK, dan
+          keluarga dalam semangat kolaborasi serta kepedulian terhadap
+          keutuhan ciptaan.
+        </>
+      ),
+    },
+  ]
+
   return (
     <PageWrapper>
       <section className="w-full bg-white">
         <div className="max-w-6xl mx-auto px-6 py-20">
-
           {/* Header */}
           <div className="mb-16">
-
             {/* Label */}
             <div className="flex items-center gap-4 mb-5">
               <div className="w-12 sm:w-16 h-3 bg-green-800 rounded-r-full"></div>
@@ -39,51 +75,49 @@ export default function Informasi() {
 
           {/* Hero Content */}
           <div className="grid lg:grid-cols-2 gap-14 items-center mb-28">
-
             {/* Left */}
             <div>
-
+              {/* Paragraf 1 selalu tampil */}
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Perayaan HUT ke-33 Paroki Santo Barnabas Pamulang
-                menjadi momentum perjalanan iman seluruh umat untuk
-                terus bertumbuh bersama dalam kasih, pelayanan,
-                dan kepedulian terhadap sesama serta alam ciptaan.
+                {infoParagraphs[0].text}
               </p>
 
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Mengusung tema
-                <span className="font-semibold text-green-800">
-                  {" "}
-                  “Berakar dalam iman, bertumbuh bersama ciptaan”
-                </span>,
-                kegiatan HUT tahun ini mengajak seluruh umat untuk
-                membangun kesadaran bahwa merawat bumi bukan hanya
-                tanggung jawab sosial, tetapi juga bagian dari panggilan iman.
-              </p>
+              {/* Read more */}
+              <button
+                type="button"
+                onClick={() => setShowMoreInfo((prev) => !prev)}
+                className="mb-6 inline-flex items-center gap-2 text-green-800 font-semibold hover:text-green-900 transition-colors"
+                aria-expanded={showMoreInfo}
+              >
+                <span>{showMoreInfo ? "Read less" : "Read more..."}</span>
+                <span className="text-xl leading-none">
+                  {showMoreInfo ? "−" : "+"}
+                </span>
+              </button>
 
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Rangkaian kegiatan dimulai sejak Mei 2026 melalui
-                program pengolahan sampah menjadi berkat yang melibatkan
-                lingkungan, wilayah, OMK, dan keluarga dalam semangat
-                kolaborasi serta kepedulian terhadap keutuhan ciptaan.
-              </p>
+              {/* Paragraf tambahan hanya muncul saat read more dibuka */}
+              <div
+                className={`grid transition-all duration-500 ease-in-out ${
+                  showMoreInfo
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    {infoParagraphs[1].text}
+                  </p>
 
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Dengan semangat Laudato Si dan ARDAS 2026,
-                seluruh umat diajak untuk menjadikan kepedulian terhadap
-                lingkungan sebagai bagian nyata dari kehidupan menggereja.
-                Karena bumi ini sudah cukup lelah menghadapi manusia
-                yang membuang sampah sembarangan lalu upload quotes
-                tentang “healing dengan alam”.
-              </p>
-
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    {infoParagraphs[2].text}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Right */}
             <div className="flex justify-center">
-
               <div className="bg-white border border-green-100 rounded-[2rem] p-8 shadow-lg shadow-green-100/40 max-w-md w-full">
-
                 <img
                   src={logo2}
                   alt="Logo HUT Paroki"
@@ -91,7 +125,6 @@ export default function Informasi() {
                 />
 
                 <div className="space-y-6">
-
                   <div>
                     <h3 className="text-green-800 font-semibold text-lg mb-1">
                       Tema HUT
@@ -108,8 +141,8 @@ export default function Informasi() {
                     </h3>
 
                     <p className="text-gray-600 leading-relaxed">
-                      Pengolahan sampah menjadi berkat dan aksi nyata
-                      kepedulian terhadap lingkungan.
+                      Pengolahan sampah menjadi berkat dan aksi nyata kepedulian
+                      terhadap lingkungan.
                     </p>
                   </div>
 
@@ -119,25 +152,19 @@ export default function Informasi() {
                     </h3>
 
                     <p className="text-gray-600 leading-relaxed">
-                      19 Juli 2026 bersama seluruh umat
-                      Paroki Santo Barnabas Pamulang.
+                      19 Juli 2026 bersama seluruh umat Paroki Santo Barnabas
+                      Pamulang.
                     </p>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
           {/* Penilaian */}
           <div>
-
             {/* Heading */}
             <div className="mb-12">
-
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-12 sm:w-16 h-3 bg-green-800 rounded-r-full"></div>
 
@@ -151,17 +178,13 @@ export default function Informasi() {
               </h2>
 
               <p className="text-gray-600 text-lg leading-relaxed max-w-3xl">
-                Penilaian dilakukan berdasarkan proses awal,
-                pelaksanaan kegiatan, hingga hasil akhir pengolahan
-                sampah menjadi berkat.
+                Penilaian dilakukan berdasarkan proses awal, pelaksanaan
+                kegiatan, hingga hasil akhir pengolahan sampah menjadi berkat.
               </p>
-
             </div>
 
             {/* Accordion */}
             <div className="space-y-5">
-
-              {/* Accordion Item */}
               {[
                 {
                   id: "awal",
@@ -198,7 +221,6 @@ export default function Informasi() {
                     },
                   ],
                 },
-
                 {
                   id: "pelaksanaan",
                   title: "Pelaksanaan",
@@ -233,7 +255,6 @@ export default function Informasi() {
                     },
                   ],
                 },
-
                 {
                   id: "akhir",
                   title: "Akhir Kegiatan",
@@ -273,13 +294,12 @@ export default function Informasi() {
                   key={section.id}
                   className="border border-green-100 rounded-[2rem] overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300"
                 >
-
                   {/* Button */}
                   <button
+                    type="button"
                     onClick={() => toggleSection(section.id)}
                     className="w-full px-8 py-7 flex items-center justify-between text-left"
                   >
-
                     <div>
                       <h3 className="text-2xl font-semibold text-green-800">
                         {section.title}
@@ -293,14 +313,11 @@ export default function Informasi() {
                     {/* Icon */}
                     <div
                       className={`w-11 h-11 rounded-full border border-green-200 flex items-center justify-center text-2xl text-green-800 transition-all duration-500 ${
-                        openSection === section.id
-                          ? "rotate-180 bg-green-50"
-                          : ""
+                        openSection === section.id ? "rotate-180 bg-green-50" : ""
                       }`}
                     >
                       +
                     </div>
-
                   </button>
 
                   {/* Smooth Content */}
@@ -312,50 +329,36 @@ export default function Informasi() {
                     }`}
                   >
                     <div className="overflow-hidden">
-
                       <div className="px-8 pb-8 space-y-8">
-
                         {section.content.map((item, index) => (
                           <div key={index}>
-
                             <h4 className="text-lg font-semibold text-green-800 mb-4">
                               {item.title}
                             </h4>
 
                             <div className="space-y-3">
-
                               {item.items.map((point, idx) => (
                                 <div
                                   key={idx}
                                   className="flex items-start gap-3"
                                 >
-
                                   <div className="w-2 h-2 rounded-full bg-green-700 mt-3"></div>
 
                                   <p className="text-gray-700 leading-relaxed">
                                     {point}
                                   </p>
-
                                 </div>
                               ))}
-
                             </div>
-
                           </div>
                         ))}
-
                       </div>
-
                     </div>
                   </div>
-
                 </div>
               ))}
-
             </div>
-
           </div>
-
         </div>
       </section>
     </PageWrapper>
