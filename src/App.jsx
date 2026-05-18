@@ -10,6 +10,7 @@ import Jadwal from "./pages/Jadwal"
 import Sponsor from "./pages/Sponsor"
 import Merchandise from "./pages/Merchandise"
 import Kepanitiaan from "./pages/Kepanitiaan"
+import Galeri from "./pages/Galeri"
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/sponsor" element={<Sponsor />} />
           <Route path="/merchandise" element={<Merchandise />} />
           <Route path="/kepanitiaan" element={<Kepanitiaan />} />
+          <Route path="/galeri" element={<Galeri />} />
         </Routes>
       </main>
 
