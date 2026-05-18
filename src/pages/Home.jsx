@@ -28,6 +28,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-green-800 mb-6">
                 Filosofi Logo
               </h2>
+
               <p className="text-black leading-relaxed text-justify">
                 Logo HUT Paroki St. Barnabas ke-33 mengusung tema
                 <span className="font-semibold italic">
@@ -49,6 +50,28 @@ export default function Home() {
                 <strong> ARDAS 2026</strong>, bahwa keutuhan ciptaan bukan proyek
                 sesaat, melainkan perjalanan iman yang terus bertumbuh bersama.
               </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* Video YouTube */}
+        <section className="w-full bg-gray-50">
+          <div className="max-w-5xl mx-auto px-6 py-20">
+            
+            <h2 className="text-3xl font-bold text-center text-green-800 mb-10">
+              Video Kegiatan Mengolah Sampah
+            </h2>
+
+            <div className="relative w-full overflow-hidden rounded-3xl shadow-xl aspect-video">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/zhRvOrhx9p0"
+                title="Video HUT Paroki St. Barnabas"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
             </div>
 
           </div>
