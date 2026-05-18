@@ -44,7 +44,6 @@ export default function Kepanitiaan() {
         "Dina Mulyani (Bernadette 2)",
         "Mawar (Andreas)",
         "Rini (Maria Magdalena)",
-        "(Nama belum terisi) (SPM)",
         "Fransiska Sugiyanti Pukan (Vincentius)",
       ],
     },

@@ -31,24 +31,37 @@ export default function Home() {
 
               <p className="text-black leading-relaxed text-justify">
                 Logo HUT Paroki St. Barnabas ke-33 mengusung tema
-                <span className="font-semibold italic">
+                <span className="font-semibold italic text-green-800">
                   {" "}“Berakar dalam iman, bertumbuh bersama ciptaan”
                 </span>{" "}
                 sebagai ajakan refleksi atas perjalanan iman dan pelayanan paroki.
-                Angka <strong>33</strong> dibentuk menyatu menyerupai simbol
+                Angka{" "}
+                <strong className="text-green-800">
+                  33
+                </strong>{" "}
+                dibentuk menyatu menyerupai simbol
                 <em> infinity</em>, melambangkan kedewasaan iman dan karya pelayanan
                 yang terus berlanjut.
+
                 <br /><br />
+
                 Bentuk yang menyatu menggambarkan relasi yang tak terpisahkan antara
-                <strong> Allah, manusia, dan alam ciptaan</strong> dalam semangat
-                Tritunggal. Unsur hati menjadi simbol kasih yang melahirkan
-                kepedulian terhadap lingkungan, menegaskan bahwa merawat ciptaan
-                adalah panggilan iman, bukan sekadar kewajiban.
+                <strong className="text-green-800">
+                  {" "}Allah, manusia, dan alam ciptaan
+                </strong>{" "}
+                dalam semangat Tritunggal. Unsur hati menjadi simbol kasih yang
+                melahirkan kepedulian terhadap lingkungan, menegaskan bahwa merawat
+                ciptaan adalah panggilan iman, bukan sekadar kewajiban.
+
                 <br /><br />
+
                 Logo ini dirancang sederhana dan mudah dikenali sebagai sarana
                 pewartaan iman, sejalan dengan semangat
-                <strong> ARDAS 2026</strong>, bahwa keutuhan ciptaan bukan proyek
-                sesaat, melainkan perjalanan iman yang terus bertumbuh bersama.
+                <strong className="text-green-800">
+                  {" "}ARDAS 2026
+                </strong>
+                , bahwa keutuhan ciptaan bukan proyek sesaat, melainkan perjalanan
+                iman yang terus bertumbuh bersama.
               </p>
             </div>
 
