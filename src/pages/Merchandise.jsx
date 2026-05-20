@@ -32,13 +32,78 @@ function pickImage(query, index = 0) {
   return getMatches(query)[index] || null
 }
 
+function formatPrice(price) {
+  return `Rp ${price.toLocaleString("id-ID")}`
+}
+
+function getPrice(categoryName, size) {
+  switch (categoryName) {
+    case "Baju Lengan Pendek":
+      if (["S", "M", "L", "XL"].includes(size))
+        return 55000
+
+      if (size === "XXL") return 60000
+
+      if (size === "3XL") return 65000
+
+      if (size === "4XL") return 70000
+
+      return 55000
+
+    case "Baju Lengan Panjang":
+      if (["S", "M", "L", "XL"].includes(size))
+        return 65000
+
+      if (size === "XXL") return 70000
+
+      if (size === "3XL") return 75000
+
+      if (size === "4XL") return 80000
+
+      return 65000
+
+    case "Tote Bag":
+      return 35000
+
+    case "Payung Besar":
+      return 95000
+
+    case "Payung Kecil":
+      return 65000
+
+    case "Tumbler":
+      return 40000
+
+    case "Topi":
+      return 45000
+
+    case "Hoodie":
+      return 250000
+
+    case "Gelas":
+      return 35000
+
+    default:
+      return 0
+  }
+}
+
 const categories = [
   {
     id: "baju-lengan-panjang",
     name: "Baju Lengan Panjang",
     description:
       "Tersedia warna hitam dan putih dengan logo 1 dan logo 2.",
-    sizes: ["S", "M", "L", "XL", "XXL"],
+
+    sizes: [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL",
+      "4XL",
+    ],
 
     variants: [
       {
@@ -89,7 +154,15 @@ const categories = [
     description:
       "Tersedia warna hitam dan putih dengan logo 1 dan logo 2.",
 
-    sizes: ["S", "M", "L", "XL", "XXL"],
+    sizes: [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL",
+      "4XL",
+    ],
 
     variants: [
       {
@@ -278,25 +351,39 @@ const categories = [
   {
     id: "toughbag",
 
-    name: "Toughbag",
+    name: "Tote Bag",
 
     description:
-      "Tas serbaguna edisi HUT Paroki, dua pilihan model.",
+      "Tas serbaguna edisi HUT Paroki, tersedia dalam pilihan hitam dan putih.",
 
     sizes: ["All Size"],
 
     variants: [
       {
-        label: "Model 1",
-        color: "-",
-        logo: "-",
+        label: "Hitam - Model 1",
+        color: "Hitam",
+        logo: "Model 1",
+        image: pickImage("TOUGHBAGHITAM1"),
+      },
+
+      {
+        label: "Hitam - Model 2",
+        color: "Hitam",
+        logo: "Model 2",
+        image: pickImage("TOUGHBAGHITAM2"),
+      },
+
+      {
+        label: "Putih - Model 1",
+        color: "Putih",
+        logo: "Model 1",
         image: pickImage("TOUGHBAG1"),
       },
 
       {
-        label: "Model 2",
-        color: "-",
-        logo: "-",
+        label: "Putih - Model 2",
+        color: "Putih",
+        logo: "Model 2",
         image: pickImage("TOUGHBAG2"),
       },
     ],
@@ -361,6 +448,17 @@ export default function Merchandise() {
       ] || activeCategory.variants[0]
     )
   }, [activeCategory, selectedVariantIndex])
+
+  const itemPrice = useMemo(() => {
+    if (!activeCategory) return 0
+
+    return getPrice(
+      activeCategory.name,
+      selectedSize
+    )
+  }, [activeCategory, selectedSize])
+
+  const totalPrice = itemPrice * quantity
 
   useEffect(() => {
     if (!activeCategory) return
@@ -430,14 +528,22 @@ export default function Merchandise() {
 
       `Ukuran: ${sizeText}`,
 
+      `Harga Satuan: ${formatPrice(
+        itemPrice
+      )}`,
+
       `Jumlah: ${quantity}`,
+
+      `Total Harga: ${formatPrice(
+        totalPrice
+      )}`,
 
       "",
 
       "Mohon info ketersediaan dan total pembayaran. Terima kasih.",
     ].join("\n")
 
-    const phoneNumber = "6281774851939"
+    const phoneNumber = "6281298117711"
 
     const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
@@ -478,6 +584,11 @@ export default function Merchandise() {
                 category.variants.find(
                   (v) => v.image
                 )?.image || null
+
+              const startPrice = getPrice(
+                category.name,
+                category.sizes?.[0]
+              )
 
               return (
                 <button
@@ -543,8 +654,13 @@ export default function Merchandise() {
                       {category.name}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-3">
                       {category.description}
+                    </p>
+
+                    <p className="text-lg font-bold text-green-800">
+                      {" "}
+                      {formatPrice(startPrice)}
                     </p>
                   </div>
                 </button>
@@ -620,6 +736,11 @@ export default function Merchandise() {
                         <h2 className="text-2xl font-bold text-green-800 mt-2 leading-tight">
                           {activeCategory.name}
                         </h2>
+
+                        <p className="mt-2 text-lg font-semibold text-green-700">
+                          Harga:{" "}
+                          {formatPrice(itemPrice)}
+                        </p>
                       </div>
 
                       <button
@@ -760,13 +881,7 @@ export default function Merchandise() {
                                 )
                             )
                           }
-                          className="  w-10
-                          h-10
-                          text-lg
-                          font-bold
-                          text-black
-                          hover:bg-gray-100
-                          transition"
+                          className="w-10 h-10 text-lg font-bold text-black hover:bg-gray-100 transition"
                         >
                           -
                         </button>
@@ -783,16 +898,23 @@ export default function Merchandise() {
                                 prev + 1
                             )
                           }
-                          className="  w-10
-                          h-10
-                          text-lg
-                          font-bold
-                          text-black
-                          hover:bg-gray-100
-                          transition"
+                          className="w-10 h-10 text-lg font-bold text-black hover:bg-gray-100 transition"
                         >
                           +
                         </button>
+                      </div>
+                    </div>
+
+                    {/* TOTAL */}
+                    <div className="mb-6 rounded-2xl bg-green-50 border border-green-100 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <span className="text-sm font-medium text-gray-700">
+                          Total Harga
+                        </span>
+
+                        <span className="text-2xl font-bold text-green-800">
+                          {formatPrice(totalPrice)}
+                        </span>
                       </div>
                     </div>
 

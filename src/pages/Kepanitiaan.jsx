@@ -33,6 +33,21 @@ export default function Kepanitiaan() {
     },
   ]
 
+  const websiteTeam = [
+    {
+      jabatan: "Full Stack",
+      anggota: [
+        "Inosensius Dwi Atmoko (Lingkungan Vincentius)",
+      ],
+    },
+    {
+      jabatan: "Penasehat",
+      anggota: [
+        "Stefanus Mipur (Vincentius)",
+      ],
+    },
+  ]
+
   const seksi = [
     {
       nama: "Seksi Dana",
@@ -124,7 +139,7 @@ export default function Kepanitiaan() {
     {
       nama: "Seksi Keamanan",
       anggota: [
-        "Yudhi (Andreas)",
+        "Yudho (Andreas)",
         "Alex (Maria Magdalena)",
       ],
     },
@@ -150,9 +165,11 @@ export default function Kepanitiaan() {
             </h1>
 
             <p className="text-gray-600 text-lg mt-4 max-w-3xl leading-relaxed">
-              HUT Paroki ke-33 & Dehonian Day. Karena acara gereja
-              tanpa panitia itu cuma kumpulan orang bingung yang saling
-              menunggu siapa duluan pegang mic.
+              HUT Paroki ke-33 diselenggarakan dengan semangat
+              kebersamaan dan pelayanan oleh panitia dari Wilayah 9 Paroki
+              St. Barnabas Pamulang. Melalui rangkaian kegiatan ini, kami ingin
+              menghadirkan sukacita, mempererat persaudaraan umat, serta menjadi
+              sarana untuk bertumbuh bersama dalam iman dan pelayanan.
             </p>
           </div>
 
@@ -164,6 +181,41 @@ export default function Kepanitiaan() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {strukturInti.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-green-100 rounded-3xl p-7 shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <h3 className="text-xl font-semibold text-green-800 mb-5">
+                    {item.jabatan}
+                  </h3>
+
+                  <div className="space-y-3">
+                    {item.anggota.map((nama, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-green-700 mt-3"></div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                          {nama}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Website */}
+          <div className="mb-20">
+            <h2 className="text-2xl font-bold text-green-800 mb-8">
+              Website
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {websiteTeam.map((item, index) => (
                 <div
                   key={index}
                   className="bg-white border border-green-100 rounded-3xl p-7 shadow-sm hover:shadow-md transition-all duration-300"

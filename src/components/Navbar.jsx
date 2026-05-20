@@ -34,10 +34,10 @@ export default function Navbar() {
             />
 
             <span className="font-semibold text-sm sm:text-base md:text-lg text-green-800 leading-snug">
-              HUT Paroki
-              <br className="sm:hidden" />
-              St. Barnabas
-            </span>
+            HUT Paroki{" "}
+            <br className="sm:hidden" />
+            {" "}St. Barnabas
+          </span>
           </div>
 
           {/* Menu Desktop */}
