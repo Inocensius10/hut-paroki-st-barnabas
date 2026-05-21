@@ -50,38 +50,17 @@ function getPrice(categoryName, size) {
 
       return 55000
 
-    case "Baju Lengan Panjang":
-      if (["S", "M", "L", "XL"].includes(size))
-        return 65000
-
-      if (size === "XXL") return 70000
-
-      if (size === "3XL") return 75000
-
-      if (size === "4XL") return 80000
-
-      return 65000
-
     case "Tote Bag":
       return 35000
 
-    case "Payung Besar":
+    case "Payung":
       return 95000
-
-    case "Payung Kecil":
-      return 65000
 
     case "Tumbler":
       return 40000
 
-    case "Topi":
-      return 45000
-
-    case "Hoodie":
-      return 250000
-
-    case "Gelas":
-      return 35000
+    case "Foldable Bag":
+      return 25000
 
     default:
       return 0
@@ -89,65 +68,6 @@ function getPrice(categoryName, size) {
 }
 
 const categories = [
-  {
-    id: "baju-lengan-panjang",
-    name: "Baju Lengan Panjang",
-    description:
-      "Tersedia warna hitam dan putih dengan logo 1 dan logo 2.",
-
-    sizes: [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "3XL",
-      "4XL",
-    ],
-
-    variants: [
-      {
-        label: "Hitam - Logo 1",
-        color: "Hitam",
-        logo: "Logo 1",
-        image: pickImage(
-          "BAJULENGANPANJANGHITAM",
-          0
-        ),
-      },
-
-      {
-        label: "Hitam - Logo 2",
-        color: "Hitam",
-        logo: "Logo 2",
-        image: pickImage(
-          "BAJULENGANPANJANGHITAM",
-          1
-        ),
-      },
-
-      {
-        label: "Putih - Logo 1",
-        color: "Putih",
-        logo: "Logo 1",
-        image: pickImage(
-          "BAJULENGANPANJANGPUTIH",
-          0
-        ),
-      },
-
-      {
-        label: "Putih - Logo 2",
-        color: "Putih",
-        logo: "Logo 2",
-        image: pickImage(
-          "BAJULENGANPANJANGPUTIH",
-          1
-        ),
-      },
-    ],
-  },
-
   {
     id: "baju-lengan-pendek",
     name: "Baju Lengan Pendek",
@@ -208,62 +128,9 @@ const categories = [
   },
 
   {
-    id: "hoodie",
-    name: "Hoodie",
+    id: "payung",
 
-    description:
-      "Hoodie eksklusif HUT Paroki dalam pilihan hitam dan putih.",
-
-    sizes: ["S", "M", "L", "XL", "XXL"],
-
-    variants: [
-      {
-        label: "Hitam",
-        color: "Hitam",
-        logo: "-",
-        image: pickImage("HOODIEHITAM"),
-      },
-
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "-",
-        image: pickImage("HOODIEPUTIH"),
-      },
-    ],
-  },
-
-  {
-    id: "gelas",
-
-    name: "Gelas",
-
-    description:
-      "Gelas edisi HUT Paroki dalam warna hitam dan putih.",
-
-    sizes: ["All Size"],
-
-    variants: [
-      {
-        label: "Hitam",
-        color: "Hitam",
-        logo: "-",
-        image: pickImage("GELASHITAM"),
-      },
-
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "-",
-        image: pickImage("GELASPUTIH"),
-      },
-    ],
-  },
-
-  {
-    id: "payung-besar",
-
-    name: "Payung Besar",
+    name: "Payung",
 
     description:
       "Payung besar untuk kebutuhan harian dan acara.",
@@ -277,50 +144,16 @@ const categories = [
         logo: "-",
         image: pickImage("PAYUNGBESARHITAM"),
       },
-
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "-",
-        image: pickImage("PAYUNGBESARPUTIH"),
-      },
     ],
   },
 
   {
-    id: "payung-kecil",
+    id: "Foldable Bag",
 
-    name: "Payung Kecil",
-
-    description:
-      "Payung kecil yang praktis dibawa ke mana saja.",
-
-    sizes: ["All Size"],
-
-    variants: [
-      {
-        label: "Hitam",
-        color: "Hitam",
-        logo: "-",
-        image: pickImage("PAYUNGKECILHITAM"),
-      },
-
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "-",
-        image: pickImage("PAYUNGKECILPUTIH"),
-      },
-    ],
-  },
-
-  {
-    id: "topi",
-
-    name: "Topi",
+    name: "Foldable Bag",
 
     description:
-      "Topi merchandise dengan beberapa pilihan tampilan.",
+      "Tas belanja merchandise dengan beberapa pilihan tampilan.",
 
     sizes: ["All Size"],
 
@@ -329,27 +162,20 @@ const categories = [
         label: "Hitam 1",
         color: "Hitam",
         logo: "Model 1",
-        image: pickImage("TOPIHITAM"),
+        image: pickImage("FOUDBLEHITAM"),
       },
 
       {
         label: "Hitam 2",
         color: "Hitam",
         logo: "Model 2",
-        image: pickImage("TOPIHITAM2"),
-      },
-
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "Model 1",
-        image: pickImage("TOPIPUTIH"),
+        image: pickImage("FOUDLEPUTIH"),
       },
     ],
   },
 
   {
-    id: "toughbag",
+    id: "tote bag",
 
     name: "Tote Bag",
 
@@ -395,7 +221,7 @@ const categories = [
     name: "Tumbler",
 
     description:
-      "Tumbler ramah lingkungan dengan warna hitam dan putih.",
+      "Tumbler ramah lingkungan dengan ukuran yang mungil mudah dibawa.",
 
     sizes: ["All Size"],
 
@@ -407,12 +233,6 @@ const categories = [
         image: pickImage("TUMBLERHITAM"),
       },
 
-      {
-        label: "Putih",
-        color: "Putih",
-        logo: "-",
-        image: pickImage("TUMBLERPUTIH"),
-      },
     ],
   },
 ]

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Carousel from "../components/Carousel"
 import PageWrapper from "../components/PageWrapper"
 import logo from "../assets/logo.png"
@@ -5,6 +6,8 @@ import ketua from "../assets/ketua.jpg"
 import kupon from "../assets/kupon2.jpeg"
 
 export default function Home() {
+  const [showMoreFilosofi, setShowMoreFilosofi] = useState(false)
+
   return (
     <PageWrapper>
       <div className="w-full">
@@ -14,9 +17,9 @@ export default function Home() {
 
         {/* Kata Sambutan Ketua */}
         <section className="w-full bg-white">
-          <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-start">
 
-            {/* Kata Sambutan */}
+            {/* Left Content */}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-8">
                 Kata Sambutan Ketua Panitia
@@ -91,22 +94,48 @@ export default function Home() {
             </div>
 
             {/* Foto Ketua */}
-            <div className="flex flex-col items-center">
-              <img
-                src={ketua}
-                alt="Ketua Panitia HUT Paroki"
-                className="w-full max-w-md rounded-3xl shadow-2xl object-cover"
-              />
+            <div className="relative">
 
-              <div className="text-center mt-6">
-                <h3 className="text-xl font-bold text-green-800">
-                  A. Rikartajaya & Aloysius Sumarjo
-                </h3>
+              {/* Desktop Sticky */}
+              <div className="hidden md:block sticky top-28">
+                <div className="flex flex-col items-center">
+                  <img
+                    src={ketua}
+                    alt="Ketua Panitia HUT Paroki"
+                    className="w-full max-w-md rounded-3xl shadow-2xl object-cover"
+                  />
 
-                <p className="text-gray-600 mt-2">
-                  Ketua 1 & Ketua 2
-                </p>
+                  <div className="text-center mt-6">
+                    <h3 className="text-xl font-bold text-green-800">
+                      A. Rikartajaya & Aloysius Sumarjo
+                    </h3>
+
+                    <p className="text-gray-600 mt-2">
+                      Ketua 1 & Ketua 2
+                    </p>
+                  </div>
+                </div>
               </div>
+
+              {/* Mobile Normal */}
+              <div className="flex flex-col items-center md:hidden mt-10">
+                <img
+                  src={ketua}
+                  alt="Ketua Panitia HUT Paroki"
+                  className="w-full max-w-sm rounded-3xl shadow-2xl object-cover"
+                />
+
+                <div className="text-center mt-6">
+                  <h3 className="text-xl font-bold text-green-800">
+                    A. Rikartajaya & Aloysius Sumarjo
+                  </h3>
+
+                  <p className="text-gray-600 mt-2">
+                    Ketua 1 & Ketua 2
+                  </p>
+                </div>
+              </div>
+
             </div>
 
           </div>
@@ -114,57 +143,153 @@ export default function Home() {
 
         {/* Filosofi Logo */}
         <section className="w-full bg-gray-50">
-          <div className="max-w-5xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+          <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-14 items-start">
 
-            {/* Logo */}
-            <div className="flex justify-center">
+            {/* Logo Fixed */}
+            <div className="relative hidden md:block">
+              <div className="sticky top-28">
+                <div className="flex justify-center">
+                  <img
+                    src={logo}
+                    alt="Logo HUT Paroki St. Barnabas"
+                    className="w-64 lg:w-72 object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Logo */}
+            <div className="flex justify-center md:hidden mb-10">
               <img
                 src={logo}
                 alt="Logo HUT Paroki St. Barnabas"
-                className="w-48 md:w-56"
+                className="w-52 object-contain"
               />
             </div>
 
-            {/* Teks Filosofi */}
+            {/* Text */}
             <div>
-              <h2 className="text-3xl font-bold text-green-800 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-8 text-left">
                 Filosofi Logo
               </h2>
 
-              <p className="text-black leading-relaxed text-justify">
-                Logo HUT Paroki St. Barnabas ke-33 mengusung tema
-                <span className="font-semibold italic text-green-800">
-                  {" "}“Berakar dalam iman, bertumbuh bersama ciptaan”
-                </span>{" "}
-                sebagai ajakan refleksi atas perjalanan iman dan pelayanan paroki.
-                Angka{" "}
-                <strong className="text-green-800">
-                  33
-                </strong>{" "}
-                dibentuk menyatu menyerupai simbol
-                <em> infinity</em>, melambangkan kedewasaan iman dan karya pelayanan
-                yang terus berlanjut.
+              <div className="text-black leading-relaxed text-justify text-[15px] md:text-base">
 
-                <br /><br />
+                {/* Awal */}
+                <p>
+                  Logo HUT Paroki St. Barnabas ke-33 mengusung tema
+                  <span className="font-semibold italic text-green-800">
+                    {" "}“Berakar dalam iman, bertumbuh bersama ciptaan”
+                  </span>{" "}
+                  sebagai ajakan refleksi atas perjalanan iman dan pelayanan paroki.
+                  Angka{" "}
+                  <strong className="text-green-800">
+                    33
+                  </strong>{" "}
+                  dibentuk menyatu menyerupai simbol
+                  <em> infinity</em>, melambangkan kedewasaan iman dan karya pelayanan
+                  yang terus berlanjut.
+                </p>
 
-                Bentuk yang menyatu menggambarkan relasi yang tak terpisahkan antara
-                <strong className="text-green-800">
-                  {" "}Allah, manusia, dan alam ciptaan
-                </strong>{" "}
-                dalam semangat Tritunggal. Unsur hati menjadi simbol kasih yang
-                melahirkan kepedulian terhadap lingkungan, menegaskan bahwa merawat
-                ciptaan adalah panggilan iman, bukan sekadar kewajiban.
+                {/* Button */}
+                <button
+                  type="button"
+                  onClick={() => setShowMoreFilosofi((prev) => !prev)}
+                  className="mt-6 inline-flex items-center gap-2 text-green-800 font-semibold hover:text-green-900 transition-all duration-300"
+                >
+                  <span>
+                    {showMoreFilosofi ? "Read Less..." : "Read More..."}
+                  </span>
 
-                <br /><br />
+                  <span
+                    className={`text-2xl leading-none transition-transform duration-500 ${
+                      showMoreFilosofi ? "rotate-45" : "rotate-0"
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
 
-                Logo ini dirancang sederhana dan mudah dikenali sebagai sarana
-                pewartaan iman, sejalan dengan semangat
-                <strong className="text-green-800">
-                  {" "}ARDAS 2026
-                </strong>
-                , bahwa keutuhan ciptaan bukan proyek sesaat, melainkan perjalanan
-                iman yang terus bertumbuh bersama.
-              </p>
+                {/* Smooth Expand */}
+                <div
+                  className={`grid transition-all duration-700 ease-in-out ${
+                    showMoreFilosofi
+                      ? "grid-rows-[1fr] opacity-100 mt-6"
+                      : "grid-rows-[0fr] opacity-0 mt-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+
+                    <p className="mt-5">
+                      Bentuk yang menyatu menggambarkan relasi yang tak terpisahkan antara
+                      <strong className="text-green-800">
+                        {" "}Allah, manusia, dan alam ciptaan
+                      </strong>{" "}
+                      dalam semangat Tritunggal. Unsur hati menjadi simbol kasih yang
+                      melahirkan kepedulian terhadap lingkungan, menegaskan bahwa merawat
+                      ciptaan adalah panggilan iman, bukan sekadar kewajiban.
+                    </p>
+
+                    <p className="mt-5">
+                      Logo ini dirancang sederhana dan mudah dikenali sebagai sarana
+                      pewartaan iman, sejalan dengan semangat
+                      <strong className="text-green-800">
+                        {" "}ARDAS 2026
+                      </strong>
+                      , bahwa keutuhan ciptaan bukan proyek sesaat, melainkan perjalanan
+                      iman yang terus bertumbuh bersama.
+                    </p>
+
+                    {/* Ensiklik */}
+                    <div className="mt-10 border-t border-gray-200 pt-8">
+
+                      <h3 className="text-2xl font-bold text-green-800 mb-6 text-left">
+                        Ensiklik Laudato Si’
+                      </h3>
+
+                      <div className="space-y-5 text-black leading-relaxed text-justify">
+
+                        <p>
+                          Kerusakan alam saat ini semakin parah. Penebangan hutan,
+                          penggunaan energi fosil, dan sampah menjadi penyebab utama
+                          rusaknya bumi. Patriark Bartolomeus mengatakan bahwa setiap
+                          orang ikut menyumbang kerusakan lingkungan, baik kecil maupun
+                          besar. Karena itu, kita diajak untuk menyadari dan
+                          bertanggung jawab atas tindakan kita terhadap alam.
+                        </p>
+
+                        <p>
+                          Dalam kehidupan sehari-hari pun, kita sering menjadi
+                          penyumbang pencemaran, misalnya melalui limbah deterjen,
+                          sampah rumah tangga, dan sisa makanan. Hal-hal kecil yang
+                          terus dilakukan dapat berdampak besar bagi lingkungan.
+                          Manusia memang makhluk cerdas, tetapi anehnya sering lebih
+                          rajin merusak rumah sendiri daripada merawatnya. Spesies
+                          yang bisa membuat satelit ke luar angkasa, tapi masih buang
+                          sampah sembarangan. Tragis sekali.
+                        </p>
+
+                        <p>
+                          Melalui Ensiklik Laudato Si’, Pope Francis mengajak umat
+                          untuk melakukan pertobatan ekologis, yaitu perubahan sikap
+                          dan kebiasaan agar lebih peduli terhadap alam ciptaan Tuhan.
+                          Menjaga lingkungan bukan hanya pilihan, tetapi bagian penting
+                          dari iman dan kehidupan Kristiani.
+                        </p>
+
+                        <p>
+                          Karena itu, marilah kita bersama-sama mulai menjaga bumi
+                          rumah kita bersama, salah satunya dengan mengolah sampah
+                          menjadi sesuatu yang bermanfaat dan membawa berkat.
+                        </p>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
             </div>
 
           </div>
@@ -174,7 +299,6 @@ export default function Home() {
         <section className="w-full bg-white">
           <div className="max-w-6xl mx-auto px-6 py-20">
 
-            {/* Heading */}
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-green-800">
                 Kupon Doorprize HUT ke-33
@@ -183,16 +307,12 @@ export default function Home() {
               <p className="text-gray-600 mt-4 max-w-3xl mx-auto leading-relaxed text-base md:text-lg">
                 Dengan membeli kupon doorprize ini, Anda turut membantu
                 keberlangsungan dan kesuksesan rangkaian acara HUT Paroki
-                Santo Barnabas ke-33. Selain itu, Anda juga berkesempatan
-                mendapatkan berbagai hadiah menarik, doorprize spesial,
-                dan kejutan lainnya yang telah disiapkan oleh panitia.
+                Santo Barnabas ke-33.
               </p>
             </div>
 
-            {/* Card Kupon */}
             <div className="bg-gray-50 rounded-[32px] shadow-xl overflow-hidden border border-gray-100">
 
-              {/* Gambar Kupon */}
               <div className="w-full overflow-hidden">
                 <img
                   src={kupon}
@@ -204,7 +324,6 @@ export default function Home() {
                 />
               </div>
 
-              {/* Konten */}
               <div className="p-8 md:p-12 text-center flex flex-col items-center">
 
                 <span className="inline-block bg-green-100 text-green-800 text-sm font-semibold px-4 py-2 rounded-full mb-5">
@@ -220,8 +339,7 @@ export default function Home() {
 
                 <p className="text-gray-600 mt-5 leading-relaxed max-w-2xl">
                   Mari ambil bagian dalam kemeriahan HUT Paroki dengan
-                  memesan kupon doorprize sekarang juga dan jadilah bagian
-                  dari sukacita perayaan bersama seluruh umat.
+                  memesan kupon doorprize sekarang juga.
                 </p>
 
                 <div className="mt-8">
@@ -250,7 +368,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Video YouTube */}
+        {/* Video */}
         <section className="w-full bg-white">
           <div className="max-w-5xl mx-auto px-6 py-20">
 
