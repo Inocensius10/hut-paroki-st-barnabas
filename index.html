@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/logo.png"
+    />
 
     <meta
       name="viewport"
@@ -11,15 +15,364 @@
     />
 
     <title>HUT Paroki Pamulang</title>
+
+    <style>
+      .floating-kupon {
+        position: fixed;
+
+        top: 50%;
+        left: 10px;
+
+        z-index: 9999;
+
+        width: 95px;
+
+        cursor: grab;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
+
+        touch-action: none;
+
+        transition:
+          top 0.25s ease,
+          left 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          right 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.25s ease;
+
+        animation: wiggle 5s infinite;
+      }
+
+      .floating-kupon:active {
+        cursor: grabbing;
+      }
+
+      .floating-kupon:hover {
+        transform: scale(1.05);
+      }
+
+      .floating-kupon img {
+        width: 100%;
+
+        display: block;
+
+        pointer-events: none;
+
+        filter: drop-shadow(
+          0 10px 22px rgba(0, 0, 0, 0.25)
+        );
+      }
+
+      /* Efek getar kecil */
+      @keyframes wiggle {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        1% {
+          transform: rotate(-4deg);
+        }
+
+        2% {
+          transform: rotate(4deg);
+        }
+
+        3% {
+          transform: rotate(-3deg);
+        }
+
+        4% {
+          transform: rotate(3deg);
+        }
+
+        5% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        .floating-kupon {
+          width: 78px;
+
+          top: 100px;
+          right: 10px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <!-- ROOT REACT -->
     <div id="root"></div>
 
-    <!-- ROOT KHUSUS MODAL / POPUP -->
+    <!-- ROOT KHUSUS MODAL -->
     <div id="modal-root"></div>
 
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- FLOATING POPUP -->
+    <a
+      href="/#kupon-section"
+      class="floating-kupon"
+      id="floatingKupon"
+    >
+      <img
+        src="/popupkupon.png"
+        alt="Popup Kupon"
+        draggable="false"
+      />
+    </a>
+
+    <script>
+      const floatingKupon =
+        document.getElementById(
+          "floatingKupon"
+        )
+
+      let isDragging = false
+      let moved = false
+
+      let currentX = 0
+      let currentY = 0
+
+      let offsetX = 0
+      let offsetY = 0
+
+      /* =========================
+         SNAP KE TEPI
+      ========================= */
+      function snapToEdge() {
+        const screenWidth =
+          window.innerWidth
+
+        const popupWidth =
+          floatingKupon.offsetWidth
+
+        const popupCenter =
+          currentX + popupWidth / 2
+
+        if (
+          popupCenter <
+          screenWidth / 2
+        ) {
+          /* kiri */
+          currentX = 10
+
+          floatingKupon.style.left =
+            currentX + "px"
+
+          floatingKupon.style.right =
+            "auto"
+        } else {
+          /* kanan */
+          currentX =
+            screenWidth -
+            popupWidth -
+            10
+
+          floatingKupon.style.left =
+            currentX + "px"
+
+          floatingKupon.style.right =
+            "auto"
+        }
+
+        floatingKupon.style.top =
+          currentY + "px"
+      }
+
+      /* =========================
+         START DRAG
+      ========================= */
+      function startDrag(x, y) {
+        isDragging = true
+        moved = false
+
+        const rect =
+          floatingKupon.getBoundingClientRect()
+
+        offsetX = x - rect.left
+        offsetY = y - rect.top
+
+        currentX = rect.left
+        currentY = rect.top
+
+        floatingKupon.style.transition =
+          "none"
+      }
+
+      /* =========================
+         DRAGGING
+      ========================= */
+      function drag(x, y) {
+        if (!isDragging) return
+
+        moved = true
+
+        let newX = x - offsetX
+        let newY = y - offsetY
+
+        const maxX =
+          window.innerWidth -
+          floatingKupon.offsetWidth -
+          10
+
+        const maxY =
+          window.innerHeight -
+          floatingKupon.offsetHeight -
+          10
+
+        /* batas kiri kanan */
+        if (newX < 10) newX = 10
+        if (newX > maxX) newX = maxX
+
+        /* batas atas bawah */
+        if (newY < 10) newY = 10
+        if (newY > maxY) newY = maxY
+
+        currentX = newX
+        currentY = newY
+
+        floatingKupon.style.left =
+          currentX + "px"
+
+        floatingKupon.style.top =
+          currentY + "px"
+
+        floatingKupon.style.right =
+          "auto"
+      }
+
+      /* =========================
+         END DRAG
+      ========================= */
+      function endDrag() {
+        if (!isDragging) return
+
+        isDragging = false
+
+        floatingKupon.style.transition =
+          `
+          top 0.25s ease,
+          left 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          right 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.25s ease
+        `
+
+        snapToEdge()
+      }
+
+      /* =========================
+         DESKTOP
+      ========================= */
+      floatingKupon.addEventListener(
+        "mousedown",
+        (e) => {
+          startDrag(
+            e.clientX,
+            e.clientY
+          )
+        }
+      )
+
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          drag(
+            e.clientX,
+            e.clientY
+          )
+        }
+      )
+
+      document.addEventListener(
+        "mouseup",
+        () => {
+          endDrag()
+        }
+      )
+
+      /* =========================
+         MOBILE
+      ========================= */
+      floatingKupon.addEventListener(
+        "touchstart",
+        (e) => {
+          const touch =
+            e.touches[0]
+
+          startDrag(
+            touch.clientX,
+            touch.clientY
+          )
+        },
+        { passive: true }
+      )
+
+      document.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!isDragging) return
+
+          const touch =
+            e.touches[0]
+
+          drag(
+            touch.clientX,
+            touch.clientY
+          )
+        },
+        { passive: false }
+      )
+
+      document.addEventListener(
+        "touchend",
+        () => {
+          endDrag()
+        }
+      )
+
+      /* =========================
+         CEGAH CLICK SAAT DRAG
+      ========================= */
+      floatingKupon.addEventListener(
+        "click",
+        (e) => {
+          if (moved) {
+            e.preventDefault()
+
+            moved = false
+          }
+        }
+      )
+
+      /* =========================
+         AUTO KOREKSI SAAT RESIZE
+      ========================= */
+      window.addEventListener(
+        "resize",
+        () => {
+          const maxY =
+            window.innerHeight -
+            floatingKupon.offsetHeight -
+            10
+
+          if (currentY > maxY) {
+            currentY = maxY
+          }
+
+          snapToEdge()
+        }
+      )
+    </script>
+
+    <script
+      type="module"
+      src="/src/main.jsx"
+    ></script>
   </body>
 </html>

@@ -296,7 +296,7 @@ export default function Home() {
         </section>
 
         {/* Pemesanan Kupon Doorprize */}
-        <section className="w-full bg-white">
+        <section id="kupon-section" className="w-full bg-white">
           <div className="max-w-6xl mx-auto px-6 py-20">
 
             <div className="text-center mb-12">
