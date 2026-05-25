@@ -1,123 +1,140 @@
 import PageWrapper from "../components/PageWrapper"
 
 export default function Jadwal() {
-  const timeline = [
-    {
-      tanggal: "2 Mei 2026",
-      kegiatan:
-        'Sosialisasi Kegiatan HUT Paroki "Mengelola Sampah menjadi Berkat"',
-    },
-    {
-      tanggal: "3 Mei 2026",
-      kegiatan: "Kegiatan HUT Paroki Pamulang ke-33 dimulai",
-    },
-    {
-      tanggal: "Mei - Juli 2026",
-      kegiatan:
-        "Kunjungan Tim Visitasi ke Wilayah (disesuaikan jadwal wilayah)",
-    },
-    {
-      tanggal: "19 Juli 2026",
-      kegiatan: "Acara Puncak HUT Paroki Pamulang ke-33",
-    },
-  ]
-
   return (
     <PageWrapper>
       <section className="min-h-screen bg-white py-24 px-4 sm:px-6">
-        
-        {/* Container */}
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Header */}
-          <div className="mb-14">
-            
-            {/* Label */}
-            <div className="flex items-center gap-4 mb-5">
-              <div className="w-12 sm:w-16 h-3 bg-green-800 rounded-r-full"></div>
+        <div className="max-w-5xl mx-auto">
 
-              <span className="uuppercase tracking-[0.2em] text-sm sm:text-base text-green-800 font-medium">
+          {/* Header */}
+          <div className="mb-16">
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-14 h-[3px] bg-green-800 rounded-full"></div>
+
+              <span className="uppercase tracking-[0.25em] text-sm text-green-800 font-medium">
                 Time Line Kegiatan
               </span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-green-800 leading-tight">
-              HUT Paroki Pamulang
+            <h1 className="text-4xl sm:text-5xl font-bold text-green-800 leading-tight">
+              HUT Ke-33
             </h1>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl text-green-700 mt-2 font-light">
-              ke-33
+            <h2 className="text-2xl sm:text-3xl text-gray-800 mt-2">
+              Paroki Pamulang - Gereja Santo Barnabas
             </h2>
-          </div>
 
-          {/* Tema */}
-          <div className="mb-12">
-            <h3 className="text-2xl sm:text-3xl md:text-5xl font-light text-black leading-snug">
-              Mengelola sampah
-              <span className="font-semibold"> menjadi berkat</span>
-            </h3>
+            <p className="mt-6 text-lg text-gray-700 italic">
+              “Mengelola Sampah Menjadi Berkat”
+            </p>
           </div>
 
           {/* Timeline */}
-          <div className="relative">
-            
-            {/* Garis Timeline */}
-            <div className="hidden md:block absolute left-5 top-0 bottom-0 w-1 bg-green-700/20 rounded-full"></div>
+          <div className="space-y-10">
 
-            <div className="flex flex-col gap-6">
-              {timeline.map((item, index) => (
-                <div
-                  key={index}
-                  className="
-                    relative
-                    bg-white
-                    border
-                    border-gray-200
-                    rounded-3xl
-                    p-5
-                    sm:p-6
-                    shadow-sm
-                    hover:shadow-md
-                    transition-all
-                    duration-300
-                    md:ml-14
-                  "
-                >
-                  {/* Dot Timeline */}
-                  <div
-                    className="
-                      hidden md:block
-                      absolute
-                      -left-12
-                      top-7
-                      w-5
-                      h-5
-                      rounded-full
-                      bg-green-700
-                      border-4
-                      border-white
-                    "
-                  ></div>
+            {/* 1 */}
+            <div className="border border-gray-200 rounded-3xl p-6 sm:p-8">
+              <div className="mb-6">
+                <p className="text-sm uppercase tracking-[0.2em] text-green-700 font-semibold mb-2">
+                  1. Sosialisasi Kegiatan
+                </p>
 
-                  <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
-                    
-                    {/* Tanggal */}
-                    <div className="md:min-w-[220px]">
-                      <p className="text-lg sm:text-xl font-semibold text-green-800">
-                        {item.tanggal}
-                      </p>
-                    </div>
+                <h3 className="text-2xl font-bold text-gray-900 leading-snug">
+                  Sosialisasi Kegiatan Lomba HUT Ke-33
+                </h3>
 
-                    {/* Isi */}
-                    <div className="flex-1">
-                      <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-                        {item.kegiatan}
-                      </p>
-                    </div>
-                  </div>
+                <p className="text-gray-600 mt-2">
+                  GKP Lantai 2 — 02 Mei 2026
+                </p>
+              </div>
+
+              <div className="space-y-4 border-l-2 border-green-200 pl-5">
+                <div>
+                  <p className="text-green-800 font-semibold">
+                    10 – 31 Mei 2026
+                  </p>
+
+                  <p className="text-gray-800">
+                    Sosialisasi Tambahan I ke wilayah-wilayah
+                  </p>
                 </div>
-              ))}
+
+                <div>
+                  <p className="text-green-800 font-semibold">
+                    01 – 07 Juni 2026
+                  </p>
+
+                  <p className="text-gray-800">
+                    Sosialisasi Tambahan II ke wilayah-wilayah
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2 */}
+            <div className="border border-gray-200 rounded-3xl p-6 sm:p-8">
+              <div className="mb-6">
+                <p className="text-sm uppercase tracking-[0.2em] text-green-700 font-semibold mb-2">
+                  2. Kegiatan Lomba
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 leading-snug">
+                  Mengelola Sampah Menjadi Berkat
+                </h3>
+
+                <p className="text-gray-600 mt-2">
+                  03 Mei – 12 Juli 2026
+                </p>
+              </div>
+
+              <div className="space-y-4 border-l-2 border-green-200 pl-5">
+                <div>
+                  <p className="text-green-800 font-semibold">
+                    23 Mei – 14 Juni 2026
+                  </p>
+
+                  <p className="text-gray-800">
+                    Visitasi I Panitia HUT ke Wilayah
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-green-800 font-semibold">
+                    04 – 12 Juli 2026
+                  </p>
+
+                  <p className="text-gray-800">
+                    Visitasi II Panitia HUT ke Wilayah
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 3 */}
+            <div className="border border-gray-200 rounded-3xl p-6 sm:p-8">
+              <div className="mb-6">
+                <p className="text-sm uppercase tracking-[0.2em] text-green-700 font-semibold mb-2">
+                  3. Acara Puncak
+                </p>
+
+                <h3 className="text-2xl font-bold text-gray-900 leading-snug">
+                  HUT Ke-33 Paroki Pamulang
+                </h3>
+
+                <p className="text-gray-600 mt-2">
+                  19 Juli 2026
+                </p>
+              </div>
+
+              <div className="border-l-2 border-green-200 pl-5">
+                <p className="text-green-800 font-semibold">
+                  19 Juli 2026
+                </p>
+
+                <p className="text-gray-800">
+                  Pengundian Kupon Doorprize Dimulai
+                </p>
+              </div>
             </div>
 
           </div>

@@ -338,8 +338,8 @@ export default function Home() {
                 </h3>
 
                 <p className="text-gray-600 mt-5 leading-relaxed max-w-2xl">
-                  Mari ambil bagian dalam kemeriahan HUT Paroki dengan
-                  memesan kupon doorprize sekarang juga.
+                  Hadiah undian yang bisa kamu dapatkan, mulai dari 1 motor listrik,
+                  3 sepeda, 2 laptop, 5 HP, hingga berbagai hadiah hiburan menarik lainnya.
                 </p>
 
                 <div className="mt-8">
