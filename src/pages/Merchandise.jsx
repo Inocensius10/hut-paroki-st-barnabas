@@ -77,20 +77,42 @@ const categories = [
       },
     ],
   },
+      {
+      id: "payung-besar",
+      name: "Payung Besar",
+      description:
+        "Payung besar edisi HUT Paroki St. Barnabas ke-33. Saat ini sudah habis terjual.",
+      price: 90000,
+      soldOut: true,
+      sizes: ["All Size"],
+      variants: [
+        {
+          label: "Hitam",
+          color: "Hitam",
+          logo: "-",
+          image: pickImage("PAYUNGBESARBIRU"),
+        },
+        {
+          label: "Hitam",
+          color: "Hitam",
+          logo: "-",
+          image: pickImage("PAYUNGBESARPUTIH"),
+        },
+      ],
+    },
   {
     id: "payung-sedang",
     name: "Payung Sedang",
     description:
       "Varian payung Sedang tersedia, namun saat ini statusnya sold out.",
     price: 70000,
-    soldOut: true,
     sizes: ["All Size"],
     variants: [
       {
         label: "Hitam",
         color: "Hitam",
         logo: "-",
-        image: pickImage("PAYUNGBESARHITAM"),
+        image: pickImage("PAYUNGSEDANG"),
       },
     ],
   },
