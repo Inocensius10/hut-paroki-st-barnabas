@@ -78,11 +78,11 @@ const categories = [
     ],
   },
   {
-    id: "payung-besar",
-    name: "Payung Besar",
+    id: "payung-sedang",
+    name: "Payung Sedang",
     description:
-      "Varian payung besar tersedia, namun saat ini statusnya sold out.",
-    price: 95000,
+      "Varian payung Sedang tersedia, namun saat ini statusnya sold out.",
+    price: 70000,
     soldOut: true,
     sizes: ["All Size"],
     variants: [
@@ -99,7 +99,7 @@ const categories = [
     name: "Payung Kecil",
     description:
       "Payung kecil yang praktis dibawa, tersedia beberapa pilihan warna.",
-    price: 70000,
+    price: 40000,
     sizes: ["All Size"],
     variants: [
       {
