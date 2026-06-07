@@ -99,7 +99,7 @@ const categories = [
     name: "Payung Kecil",
     description:
       "Payung kecil yang praktis dibawa, tersedia beberapa pilihan warna.",
-    price: 65000,
+    price: 70000,
     sizes: ["All Size"],
     variants: [
       {
