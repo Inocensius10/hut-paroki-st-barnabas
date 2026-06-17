@@ -155,7 +155,7 @@ const categories = [
     name: "Foldable Bag",
     description:
       "Tas lipat yang ringkas dan mudah dibawa, tersedia beberapa warna.",
-    price: 40000,
+    price: 30000,
     sizes: ["All Size"],
     variants: [
       {
