@@ -6,6 +6,14 @@ import rapat2 from "../assets/galeri/rapat2.jpeg"
 import sosial1 from "../assets/galeri/sosial1.jpeg"
 import sosial2 from "../assets/galeri/sosial2.jpeg"
 
+const getYoutubeEmbedUrl = (url) => {
+  const videoId = url.match(
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/
+  )?.[1]
+
+  return `https://www.youtube.com/embed/${videoId}`
+}
+
 export default function Galeri() {
   const galeri = [
     {
@@ -17,6 +25,17 @@ export default function Galeri() {
       title: 'Sosialisasi Kegiatan HUT Paroki "Mengelola Sampah Menjadi Berkat"',
       desc: "Kegiatan sosialisasi ke masing-masing koorwil mengenai program dan kegiatan HUT Paroki.",
       images: [sosial1, sosial2],
+    },
+  ]
+
+  const videos = [
+    {
+      title: "Video Kegiatan HUT Paroki",
+      url: "https://youtu.be/aJim4N8jmOE?si=cJtOtZkQsLi3S3CW",
+    },
+    {
+      title: "Dokumentasi Kegiatan Paroki",
+      url: "https://youtu.be/G3zbiVeFlF4?si=RtVhMj3Pvk81aK4h",
     },
   ]
 
@@ -50,6 +69,60 @@ export default function Galeri() {
             {galeri.map((item, index) => (
               <GalleryCard key={index} item={item} />
             ))}
+          </div>
+          {/* Video Kegiatan */}
+          <div className="mt-20">
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-12 sm:w-16 h-3 bg-green-800 rounded-r-full"></div>
+
+              <span className="uppercase tracking-[0.2em] text-sm sm:text-base text-green-800 font-medium">
+                Dokumentasi Video
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">
+              Video Kegiatan
+            </h2>
+
+            <p className="text-gray-600 mb-10 max-w-2xl">
+              Saksikan dokumentasi kegiatan HUT Paroki Santo Barnabas ke-33 melalui
+              video yang telah dipublikasikan.
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {videos.map((video, index) => (
+                <div
+                  key={index}
+                  className="
+                    bg-white
+                    border
+                    border-gray-200
+                    rounded-3xl
+                    overflow-hidden
+                    shadow-sm
+                    hover:shadow-xl
+                    transition-all
+                    duration-300
+                  "
+                >
+                  <div className="aspect-video">
+                    <iframe
+                      src={getYoutubeEmbedUrl(video.url)}
+                      title={video.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-green-800">
+                      {video.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
