@@ -77,29 +77,29 @@ const categories = [
       },
     ],
   },
+  {
+    id: "payung-besar",
+    name: "Payung Besar",
+    description:
+      "Payung besar edisi HUT Paroki St. Barnabas ke-33. Saat ini sudah habis terjual.",
+    price: 90000,
+    soldOut: true,
+    sizes: ["All Size"],
+    variants: [
       {
-      id: "payung-besar",
-      name: "Payung Besar",
-      description:
-        "Payung besar edisi HUT Paroki St. Barnabas ke-33. Saat ini sudah habis terjual.",
-      price: 90000,
-      soldOut: true,
-      sizes: ["All Size"],
-      variants: [
-        {
-          label: "Hitam",
-          color: "Hitam",
-          logo: "-",
-          image: pickImage("PAYUNGBESARBIRU"),
-        },
-        {
-          label: "Hitam",
-          color: "Hitam",
-          logo: "-",
-          image: pickImage("PAYUNGBESARPUTIH"),
-        },
-      ],
-    },
+        label: "Hitam",
+        color: "Hitam",
+        logo: "-",
+        image: pickImage("PAYUNGBESARBIRU"),
+      },
+      {
+        label: "Hitam",
+        color: "Hitam",
+        logo: "-",
+        image: pickImage("PAYUNGBESARPUTIH"),
+      },
+    ],
+  },
   {
     id: "payung-sedang",
     name: "Payung Sedang",
@@ -546,10 +546,9 @@ export default function Merchandise() {
                                 text-sm
                                 border
                                 transition
-                                ${
-                                  isActive
-                                    ? "bg-green-800 text-white border-green-800"
-                                    : "border-gray-300 text-gray-700"
+                                ${isActive
+                                  ? "bg-green-800 text-white border-green-800"
+                                  : "border-gray-300 text-gray-700"
                                 }
                               `}
                             >
@@ -583,10 +582,9 @@ export default function Merchandise() {
                               text-sm
                               border
                               transition
-                              ${
-                                isActive
-                                  ? "bg-green-800 text-white border-green-800"
-                                  : "border-gray-300 text-gray-700"
+                              ${isActive
+                                ? "bg-green-800 text-white border-green-800"
+                                : "border-gray-300 text-gray-700"
                               }
                             `}
                           >
@@ -651,10 +649,9 @@ export default function Merchandise() {
                       font-semibold
                       shadow-lg
                       transition
-                      ${
-                        activeCategory.soldOut
-                          ? "bg-gray-400 text-white cursor-not-allowed"
-                          : "bg-green-800 text-white hover:bg-green-900"
+                      ${activeCategory.soldOut
+                        ? "bg-gray-400 text-white cursor-not-allowed"
+                        : "bg-green-800 text-white hover:bg-green-900"
                       }
                     `}
                   >
